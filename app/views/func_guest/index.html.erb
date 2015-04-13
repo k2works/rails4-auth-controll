@@ -1,0 +1,8 @@
+<h1>FuncGuest#index</h1>
+<p>Find me in app/views/func_guest/index.html.erb</p>
+
+<% if can? :crud, FuncGuest %>
+    <% @func_guest.each do |func| %>
+        <li><%= func.id %></li>
+    <% end %>
+<% end %>

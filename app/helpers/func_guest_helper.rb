@@ -1,0 +1,2 @@
+module FuncGuestHelper
+end

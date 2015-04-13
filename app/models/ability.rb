@@ -6,21 +6,26 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     if user.admin_sys?
-      can :crud, :all # 全ての機能
+      # 全ての機能
+      can :crud, :all
       can :access, :rails_admin
       can :dashboard
     elsif user.admin_biz?
-      can :crud, :all # マスタメンテ（システム）以外の全ての機能
+      # マスタメンテ（システム）以外の全ての機能
+      can :crud, :all
     elsif user.user_sys?
+      # マスタメンテ（業務）と管理ユーザ用以外の機能
       can :read, :all
+      can :crud, [FuncUser,FuncGuest]
       can :access, :rails_admin
       can :dashboard
-#      can :crud, []
     elsif user.user_biz?
-      can :read, []
-      can :crud, []
+      # マスタメンテ（システム）マスタメンテ（業務）と管理ユーザ用以外の機能
+      can :read, :all
+      can :crud, [FuncUser,FuncGuest]
     elsif user.guest?
-      can :crud, []
+      # ゲストユーザ用機能だけ
+      can :crud, [FuncGuest]
     end
   end
 end

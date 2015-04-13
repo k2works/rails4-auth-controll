@@ -15,6 +15,40 @@
     <p class="alert alert-error"><%= alert %></p>
 <% end %>
 
+<li><%= link_to('ホーム', root_url ) %></li>
+
+<% if user_signed_in? %>
+    <li>
+      <%= link_to('ログアウト', destroy_user_session_path, :method => :get) %>
+    </li>
+    <% if current_user.admin_sys? %>
+        <p>システム管理ユーザ</p>
+    <% end %>
+    <% if current_user.admin_biz? %>
+        <p>業務管理ユーザ</p>
+    <% end %>
+    <% if current_user.user_sys? %>
+        <p>システム一般ユーザ</p>
+    <% end %>
+    <% if current_user.user_biz? %>
+        <p>業務一般ユーザ</p>
+    <% end %>
+    <% if current_user.guest? %>
+        <p>ゲストユーザ</p>
+    <% end %>
+
+    <% if can? :access, :rails_admin, current_user %>
+        <p>Rails Admin User</p>
+    <% end %>
+    <% if can? :crud, current_user %>
+        <p>Business User</p>
+    <% end %>
+<% else %>
+    <li>
+      <%= link_to('ログイン', new_user_session_path)  %>
+    </li>
+<% end %>
+
 <%= yield %>
 
 </body>

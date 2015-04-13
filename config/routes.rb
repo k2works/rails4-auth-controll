@@ -1,10 +1,31 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
+  get 'func_guest/index'
+
+  get 'func_user/index'
+
+  get 'func_admin/index'
+
+  get 'master_biz/index'
+
   mount RailsAdmin::Engine => '/admin_sys', as: 'rails_admin'
   devise_for :users, controllers: {
                        sessions: "users/sessions",
                        passwords: "users/passwords",
                        registrations: "users/registrations"
-                   }
+                   },
+                     path: "/", path_names: {
+                       sign_in: 'login',
+                       sign_out: 'logout',
+                       password: 'secret',
+                       confirmation: 'verification',
+                       unlock: 'unblock',
+                       registration: 'register',
+                       sign_up: 'cmon_let_me_in'
+      }
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
