@@ -36,5 +36,9 @@
 
 ### Gemfile
 
+### deviseの設定
+
+
+
 
 
