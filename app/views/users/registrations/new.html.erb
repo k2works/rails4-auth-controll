@@ -12,6 +12,9 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+    <div><%= f.label :role %><br />
+    <%= f.select :role, User.roles ,:include_blank => false %></div>
+
   <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
 <% end %>
 
