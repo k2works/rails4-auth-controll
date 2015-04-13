@@ -1,28 +1,38 @@
-== README
+# Rails4での認証と権限管理
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+以下のユースケースを実装する
 
-Things you may want to cover:
+## ユースケース
 
-* Ruby version
++ 管理ユーザ
+    + システム管理ユーザ
+    + 業務管理ユーザ
++ 一般ユーザ
+    + システム一般ユーザ
+    + 業務一般ユーザ
+    + ゲストユーザ
 
-* System dependencies
+|            |                    | 機能                     |                      |                  |                  |                    |
+|------------|--------------------|--------------------------|----------------------|------------------|------------------|--------------------|
+|            |                    | マスタメンテ（システム） | マスタメンテ（業務） | 管理ユーザ用機能 | 一般ユーザ用機能 | ゲストユーザ用機能 |
+| 管理ユーザ | システム管理ユーザ |          C,R,U,D         |        C,R,U,D       |      C,R,U,D     |      C,R,U,D     |       C,R,U,D      |
+|            | 業務管理ユーザ     |             -            |        C,R,U,D       |      C,R,U,D     |      C,R,U,D     |       C,R,U,D      |
+| 一般ユーザ | システム一般ユーザ |             -            |           -          |         -        |      C,R,U,D     |       C,R,U,D      |
+|            | 業務一般ユーザ     |             -            |           R          |         -        |      C,R,U,D     |       C,R,U,D      |
+|            | ゲストユーザ       |             -            |           -          |         -        |         -        |                    |
 
-* Configuration
++ C:Create
++ R:Read
++ U:Update
++ D:Delete
 
-* Database creation
+## 仕様
 
-* Database initialization
++ deviseで認証する
++ cancancanでロール毎のパーミッションを割り当てる
++ rails_adminをdeviseとcancancanでadminユーザのみに使わせる
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実装
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
