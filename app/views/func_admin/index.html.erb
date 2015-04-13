@@ -2,6 +2,14 @@
 <p>Find me in app/views/func_admin/index.html.erb</p>
 
 <% if can? :crud, FuncAdmin %>
+    <p>編集可</p>
+    <% @func_admin.each do |func| %>
+        <li><%= func.id %></li>
+    <% end %>
+<% end %>
+
+<% if can? :read, FuncAdmin %>
+    <p>編集不可</p>
     <% @func_admin.each do |func| %>
         <li><%= func.id %></li>
     <% end %>

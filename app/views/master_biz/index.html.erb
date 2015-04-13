@@ -2,6 +2,14 @@
 <p>Find me in app/views/master_biz/index.html.erb</p>
 
 <% if can? :crud, User %>
+    <p>編集可</p>
+    <% @users.each do |user| %>
+        <li><%= user.email %></li>
+    <% end %>
+<% end %>
+
+<% if can? :read, User %>
+    <p>編集不可</p>
     <% @users.each do |user| %>
         <li><%= user.email %></li>
     <% end %>
