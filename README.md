@@ -38,6 +38,17 @@
 
 ### deviseの設定
 
+### cancanの設定
+
+### rails_adminの設定
+
+## 参照
+
++ [devise](https://github.com/plataformatec/devise)
++ [cancan](https://github.com/ryanb/cancan)
++ [rails_admin](https://github.com/sferik/rails_admin)
++ [Rails4 + devise + cancancan + rails_adminが最強すぎ](http://d.hatena.ne.jp/htz/20140718/1405690417)
++ [Devise/cancancanを使ってログイン機能を実装する](http://morizyun.github.io/blog/devise-cancan-rails-authorize/)
 
 
 
